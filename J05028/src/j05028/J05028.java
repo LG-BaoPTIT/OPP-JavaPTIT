@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package j05028;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 /**
  *
@@ -13,11 +15,12 @@ public class J05028 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         // TODO code application logic here
-        Scanner sc =new Scanner(System.in);
-        int t=sc.nextInt();
-        sc.nextLine();
+        File file = new File("DN.in");
+        Scanner sc =new Scanner(file);
+        int t= Integer.parseInt(sc.nextLine());
+       
         ArrayList<Congty> list = new ArrayList();
         while(t-->0){
             String ms=sc.nextLine();
@@ -26,18 +29,9 @@ public class J05028 {
             list.add(new Congty(ms,ten,Integer.valueOf(soluong)));
         }
         Collections.sort(list);
-        int x=sc.nextInt();
-        while(x-->0){
-            int a=sc.nextInt();
-            int b=sc.nextInt();
-            System.out.println("DANH SACH DOANH NGHIEP NHAN TU "+a+" DEN "+b+" SINH VIEN:");
-            for(Congty i : list){
-                if(i.getSoluong()<=b && i.getSoluong()>=a){
-                    System.out.println(i);
-                }
-                
+        for(Congty i : list){             
+                System.out.println(i);             
             }
-        }
         
     }
     

@@ -33,11 +33,7 @@ public class Congty implements Comparable {
     
     @Override
     public int compareTo(Object o) {
-      int rs =((Congty)o).getSoluong()-this.soluong;
-      if(rs==0){
-          return this.ms.compareTo(((Congty)o).getMs());
-      }
-      else return rs;
+      return this.ms.compareTo(((Congty)o).getMs());
     }
 
     @Override
