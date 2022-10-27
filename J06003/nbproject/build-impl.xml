@@ -119,6 +119,7 @@ is divided into following sections:
         <property name="module.name" value=""/>
     </target>
     <target depends="-pre-init,-init-private,-init-user,-init-project,-init-macrodef-property,-init-modules-supported" name="-do-init">
+<<<<<<< HEAD
         <j2seproject1:property name="platform.home" value="platforms.${platform.active}.home"/>
         <j2seproject1:property name="platform.bootcp" value="platforms.${platform.active}.bootclasspath"/>
         <j2seproject1:property name="platform.compiler" value="platforms.${platform.active}.compile"/>
@@ -156,6 +157,9 @@ is divided into following sections:
      ant -Duser.properties.file=&lt;path_to_property_file&gt; jar (where you put the property "platforms.${platform.active}.home" in a .properties file)
   or ant -Dplatforms.${platform.active}.home=&lt;path_to_JDK_home&gt; jar (where no properties file is used) 
   </fail>
+=======
+        <property name="platform.java" value="${java.home}/bin/java"/>
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
         <available file="${manifest.file}" property="manifest.available"/>
         <condition property="splashscreen.available">
             <and>
@@ -278,6 +282,23 @@ is divided into following sections:
         <condition else="" property="javac.profile.cmd.line.arg" value="-profile ${javac.profile}">
             <isset property="profile.available"/>
         </condition>
+<<<<<<< HEAD
+=======
+        <condition else="false" property="jdkBug6558476">
+            <and>
+                <matches pattern="1\.[56]" string="${java.specification.version}"/>
+                <not>
+                    <os family="unix"/>
+                </not>
+            </and>
+        </condition>
+        <condition else="false" property="javac.fork">
+            <or>
+                <istrue value="${jdkBug6558476}"/>
+                <istrue value="${javac.external.vm}"/>
+            </or>
+        </condition>
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
         <property name="jar.index" value="false"/>
         <property name="jar.index.metainf" value="${jar.index}"/>
         <property name="copylibs.rebase" value="true"/>
@@ -365,7 +386,11 @@ is divided into following sections:
                         </path>
                     </resourcecount>
                 </condition>
+<<<<<<< HEAD
                 <javac debug="@{debug}" deprecation="${javac.deprecation}" destdir="@{destdir}" encoding="${source.encoding}" excludes="@{excludes}" executable="${platform.javac}" fork="yes" includeantruntime="false" includes="@{includes}" source="${javac.source}" sourcepath="@{sourcepath}" srcdir="@{srcdir}" target="${javac.target}" tempdir="${java.io.tmpdir}">
+=======
+                <javac debug="@{debug}" deprecation="${javac.deprecation}" destdir="@{destdir}" encoding="${source.encoding}" excludes="@{excludes}" fork="${javac.fork}" includeantruntime="false" includes="@{includes}" source="${javac.source}" sourcepath="@{sourcepath}" srcdir="@{srcdir}" target="${javac.target}" tempdir="${java.io.tmpdir}">
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
                     <src>
                         <dirset dir="@{gensrcdir}" erroronmissingdir="false">
                             <include name="*"/>
@@ -416,7 +441,11 @@ is divided into following sections:
                 <property location="${build.dir}/empty" name="empty.dir"/>
                 <mkdir dir="${empty.dir}"/>
                 <mkdir dir="@{apgeneratedsrcdir}"/>
+<<<<<<< HEAD
                 <javac debug="@{debug}" deprecation="${javac.deprecation}" destdir="@{destdir}" encoding="${source.encoding}" excludes="@{excludes}" executable="${platform.javac}" fork="yes" includeantruntime="false" includes="@{includes}" source="${javac.source}" sourcepath="@{sourcepath}" srcdir="@{srcdir}" target="${javac.target}" tempdir="${java.io.tmpdir}">
+=======
+                <javac debug="@{debug}" deprecation="${javac.deprecation}" destdir="@{destdir}" encoding="${source.encoding}" excludes="@{excludes}" fork="${javac.fork}" includeantruntime="false" includes="@{includes}" source="${javac.source}" sourcepath="@{sourcepath}" srcdir="@{srcdir}" target="${javac.target}" tempdir="${java.io.tmpdir}">
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
                     <src>
                         <dirset dir="@{gensrcdir}" erroronmissingdir="false">
                             <include name="*"/>
@@ -458,7 +487,11 @@ is divided into following sections:
             <sequential>
                 <property location="${build.dir}/empty" name="empty.dir"/>
                 <mkdir dir="${empty.dir}"/>
+<<<<<<< HEAD
                 <javac debug="@{debug}" deprecation="${javac.deprecation}" destdir="@{destdir}" encoding="${source.encoding}" excludes="@{excludes}" executable="${platform.javac}" fork="yes" includeantruntime="false" includes="@{includes}" source="${javac.source}" sourcepath="@{sourcepath}" srcdir="@{srcdir}" target="${javac.target}" tempdir="${java.io.tmpdir}">
+=======
+                <javac debug="@{debug}" deprecation="${javac.deprecation}" destdir="@{destdir}" encoding="${source.encoding}" excludes="@{excludes}" fork="${javac.fork}" includeantruntime="false" includes="@{includes}" source="${javac.source}" sourcepath="@{sourcepath}" srcdir="@{srcdir}" target="${javac.target}" tempdir="${java.io.tmpdir}">
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
                     <src>
                         <dirset dir="@{gensrcdir}" erroronmissingdir="false">
                             <include name="*"/>
@@ -537,7 +570,11 @@ is divided into following sections:
             <element name="customizePrototype" optional="true"/>
             <sequential>
                 <property name="junit.forkmode" value="perTest"/>
+<<<<<<< HEAD
                 <junit dir="${work.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" forkmode="${junit.forkmode}" jvm="${platform.java}" showoutput="true" tempdir="${build.dir}">
+=======
+                <junit dir="${work.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" forkmode="${junit.forkmode}" showoutput="true" tempdir="${build.dir}">
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
                     <syspropertyset>
                         <propertyref prefix="test-sys-prop."/>
                         <mapper from="test-sys-prop.*" to="*" type="glob"/>
@@ -565,7 +602,11 @@ is divided into following sections:
             <element name="customizePrototype" optional="true"/>
             <sequential>
                 <property name="junit.forkmode" value="perTest"/>
+<<<<<<< HEAD
                 <junit dir="${work.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" forkmode="${junit.forkmode}" jvm="${platform.java}" showoutput="true" tempdir="${build.dir}">
+=======
+                <junit dir="${work.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" forkmode="${junit.forkmode}" showoutput="true" tempdir="${build.dir}">
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
                     <syspropertyset>
                         <propertyref prefix="test-sys-prop."/>
                         <mapper from="test-sys-prop.*" to="*" type="glob"/>
@@ -641,7 +682,11 @@ is divided into following sections:
                     </fileset>
                 </union>
                 <taskdef classname="org.testng.TestNGAntTask" classpath="${run.test.classpath}" name="testng"/>
+<<<<<<< HEAD
                 <testng classfilesetref="test.set" failureProperty="tests.failed" jvm="${platform.java}" listeners="org.testng.reporters.VerboseReporter" methods="${testng.methods.arg}" mode="${testng.mode}" outputdir="${build.test.results.dir}" suitename="J06003" testname="TestNG tests" workingDir="${work.dir}">
+=======
+                <testng classfilesetref="test.set" failureProperty="tests.failed" listeners="org.testng.reporters.VerboseReporter" methods="${testng.methods.arg}" mode="${testng.mode}" outputdir="${build.test.results.dir}" suitename="J06003" testname="TestNG tests" workingDir="${work.dir}">
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
                     <xmlfileset dir="${build.test.classes.dir}" includes="@{testincludes}"/>
                     <propertyset>
                         <propertyref prefix="test-sys-prop."/>
@@ -872,9 +917,12 @@ is divided into following sections:
                     <classpath>
                         <path path="@{classpath}"/>
                     </classpath>
+<<<<<<< HEAD
                     <bootclasspath>
                         <path path="${platform.bootcp}"/>
                     </bootclasspath>
+=======
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
                 </nbjpdastart>
             </sequential>
         </macrodef>
@@ -924,7 +972,11 @@ is divided into following sections:
             <attribute default="jvm" name="jvm"/>
             <element name="customize" optional="true"/>
             <sequential>
+<<<<<<< HEAD
                 <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true" jvm="${platform.java}" module="@{modulename}">
+=======
+                <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true" module="@{modulename}">
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
                     <classpath>
                         <path path="@{classpath}"/>
                     </classpath>
@@ -958,7 +1010,11 @@ is divided into following sections:
             <attribute default="jvm" name="jvm"/>
             <element name="customize" optional="true"/>
             <sequential>
+<<<<<<< HEAD
                 <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true" jvm="${platform.java}">
+=======
+                <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true">
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
                     <classpath>
                         <path path="@{classpath}"/>
                     </classpath>
@@ -990,7 +1046,11 @@ is divided into following sections:
             <attribute default="jvm" name="jvm"/>
             <element name="customize" optional="true"/>
             <sequential>
+<<<<<<< HEAD
                 <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true" jvm="${platform.java}">
+=======
+                <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true">
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
                     <jvmarg line="${endorsed.classpath.cmd.line.arg}"/>
                     <jvmarg value="-Dfile.encoding=${runtime.encoding}"/>
                     <redirector errorencoding="${runtime.encoding}" inputencoding="${runtime.encoding}" outputencoding="${runtime.encoding}"/>
@@ -1224,7 +1284,11 @@ is divided into following sections:
         <j2seproject3:copylibs manifest="${tmp.manifest.file}"/>
         <echo level="info">To run this application from the command line without Ant, try:</echo>
         <property location="${dist.jar}" name="dist.jar.resolved"/>
+<<<<<<< HEAD
         <echo level="info">${platform.java} -jar "${dist.jar.resolved}"</echo>
+=======
+        <echo level="info">java -jar "${dist.jar.resolved}"</echo>
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
     </target>
     <target depends="init,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen,-check-do-mkdist" if="do.archive" name="-do-jar-jar" unless="do.mkdist">
         <j2seproject1:jar manifest="${tmp.manifest.file}"/>
@@ -1326,8 +1390,13 @@ is divided into following sections:
                 <isset property="main.class.available"/>
             </and>
         </condition>
+<<<<<<< HEAD
         <property name="platform.jlink" value="${platform.home}/bin/jlink"/>
         <property name="jlink.systemmodules.internal" value="${platform.home}/jmods"/>
+=======
+        <property name="platform.jlink" value="${jdk.home}/bin/jlink"/>
+        <property name="jlink.systemmodules.internal" value="${jdk.home}/jmods"/>
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
         <exec executable="${platform.jlink}">
             <arg value="--module-path"/>
             <arg path="${jlink.systemmodules.internal}:${run.modulepath}:${dist.jar}"/>
@@ -1520,19 +1589,31 @@ is divided into following sections:
                 </not>
             </and>
         </condition>
+<<<<<<< HEAD
         <exec executable="${platform.java}" failonerror="false" outputproperty="platform.version.output">
             <arg value="-version"/>
         </exec>
         <condition else="" property="bug5101868workaround" value="*.java">
             <matches multiline="true" pattern="1\.[56](\..*)?" string="${platform.version.output}"/>
+=======
+        <condition else="" property="bug5101868workaround" value="*.java">
+            <matches pattern="1\.[56](\..*)?" string="${java.version}"/>
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
         </condition>
         <condition else="" property="javadoc.html5.cmd.line.arg" value="-html5">
             <and>
                 <isset property="javadoc.html5"/>
+<<<<<<< HEAD
                 <available file="${platform.home}${file.separator}lib${file.separator}jrt-fs.jar"/>
             </and>
         </condition>
         <javadoc additionalparam="-J-Dfile.encoding=${file.encoding} ${javadoc.additionalparam}" author="${javadoc.author}" charset="UTF-8" destdir="${dist.javadoc.dir}" docencoding="UTF-8" encoding="${javadoc.encoding.used}" executable="${platform.javadoc}" failonerror="true" noindex="${javadoc.noindex}" nonavbar="${javadoc.nonavbar}" notree="${javadoc.notree}" private="${javadoc.private}" source="${javac.source}" splitindex="${javadoc.splitindex}" use="${javadoc.use}" useexternalfile="true" version="${javadoc.version}" windowtitle="${javadoc.windowtitle}">
+=======
+                <available file="${jdk.home}${file.separator}lib${file.separator}jrt-fs.jar"/>
+            </and>
+        </condition>
+        <javadoc additionalparam="-J-Dfile.encoding=${file.encoding} ${javadoc.additionalparam}" author="${javadoc.author}" charset="UTF-8" destdir="${dist.javadoc.dir}" docencoding="UTF-8" encoding="${javadoc.encoding.used}" failonerror="true" noindex="${javadoc.noindex}" nonavbar="${javadoc.nonavbar}" notree="${javadoc.notree}" private="${javadoc.private}" source="${javac.source}" splitindex="${javadoc.splitindex}" use="${javadoc.use}" useexternalfile="true" version="${javadoc.version}" windowtitle="${javadoc.windowtitle}">
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
             <classpath>
                 <path path="${javac.classpath}"/>
             </classpath>

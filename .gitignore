@@ -51,8 +51,27 @@
 /J07054/build/
 /J07072/nbproject/private/
 /J07072/build/
+<<<<<<< HEAD
 /J06003/nbproject/private/
 /J06003/build/
 /J06001/nbproject/private/
 /J06001/build/
 /J03013/nbproject/private/
+=======
+/test/nbproject/private/
+/J05048/nbproject/private/
+/J05048/build/
+/J05050/nbproject/private/
+/J05050/build/
+/testcode/nbproject/private/
+/testcode/build/
+/J08013/nbproject/private/
+/J08013/build/
+/J08020/nbproject/private/
+/J08020/build/
+/J08012/nbproject/private/
+/J08012/build/
+/J06003/nbproject/private/
+/J06005/nbproject/private/
+/J06005/build/
+>>>>>>> 7ad84e296510ab3a2f68fdd8db5ab071dfa7a0d3
