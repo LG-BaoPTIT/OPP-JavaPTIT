@@ -6,29 +6,50 @@ package j05033;
 
 /**
  *
- * @author LGB
+ * @author Asus ROG
  */
-public class Time implements Comparable<Time>{
-    private String thoigian;
-    public Time(String s){
-        this.thoigian=s;
-    }
-    public String getThoigian() {
-        return thoigian;
+public class Time implements Comparable {
+    private int gio;
+    private int phut;;
+    private int giay;
+
+    public int getGio() {
+        return gio;
     }
 
-    public void setThoigian(String thoigian) {
-        this.thoigian = thoigian;
+    public int getPhut() {
+        return phut;
+    }
+
+    public int getGiay() {
+        return giay;
+    }
+
+    public Time(String s) {
+        String[] str = s.split(" ");
+        this.gio = Integer.valueOf(str[0]);
+        this.phut = Integer.valueOf(str[1]);
+        this.giay = Integer.valueOf(str[2]);
+                
+        
     }
 
     @Override
-    public int compareTo(Time o) {
-        return this.thoigian.compareTo(o.getThoigian());
+    public int compareTo(Object o) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(this.gio-((Time)o).getGio()==0){
+            if(this.phut-((Time)o).getPhut()==0){
+                return this.giay-((Time)o).getGiay();
+            }
+            else return this.phut-((Time)o).getPhut();
+        }
+        else return this.gio-((Time)o).getGio();
     }
 
     @Override
     public String toString() {
-        return  this.thoigian ;
+        return gio + " " + phut + " " + giay ;
     }
+    
     
 }
